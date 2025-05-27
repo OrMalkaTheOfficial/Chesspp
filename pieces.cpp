@@ -4,9 +4,7 @@ class Pawn : public Piece {
     public:
         bool hasMoved;
 
-        Pawn(int new_id, Position new_position, std::string new_color){
-            //ACTUALIZE
-        }
+        Pawn(int new_id, Position new_position, std::string new_color) : Piece(new_id, new_position, new_color) {}
         
         bool validateMove(Position new_position){
             if(new_position.x!=position.x
@@ -25,9 +23,7 @@ class Pawn : public Piece {
 
 class Rook : public Piece {
     public:
-        Rook() : Piece(int new_id, Position new_position, std::string new_color){
-            //ACTUALIZE
-        }
+        Rook(int new_id, Position new_position, std::string new_color) : Piece(new_id, new_position, new_color) {}
 
         bool validateMove(Position new_position) {
             if (new_position.x != position.x && new_position.y != position.x) {
@@ -40,9 +36,7 @@ class Rook : public Piece {
 
 class Bishop : public Piece {
     public:
-        Bishop() : Piece(int new_id, Position new_position, std::string new_color) {
-            //ACTUALIZE
-        }
+        Bishop(int new_id, Position new_position, std::string new_color) : Piece(new_id, new_position, new_color) {}
 
         bool validateMove(Position new_position) {
             if (abs(new_position.x - x) != abs(new_position.y - y)) {
@@ -55,5 +49,16 @@ class Bishop : public Piece {
 
 class Queen : public Piece, public Rook, public Bishop {
     public:
-        Queen() : Piece(int new_id, Position new_position, std::string new_color)
+        Queen(int new_id, Position new_position, std::string new_color) : Piece(new_id, new_position, new_color) {}
+
+        bool validateMove(Position new_position) {
+            if (Rook::validateMove(new_position) && Bishop::validateMove(new_position)) {
+                return true;
+            }
+            return false;
+        }
+};
+
+class Knight:: public Piece {
+
 };

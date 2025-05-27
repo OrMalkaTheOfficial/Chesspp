@@ -4,8 +4,8 @@
 class Position {
     public:
         int x;
-        char y;
-        Position::Position(int new_x, char new_y){
+        int y;
+        Position::Position(int new_x, int new_y){
             x=new_x;
             y=new_y;
         }
@@ -15,7 +15,7 @@ class Position {
             y=new_position.y;
         }
 
-        void Position::setPosition(int new_x, char new_y){
+        void Position::setPosition(int new_x, int new_y){
             if(validatePosition(x, y)){
                 x=new_x;
                 y=new_y;
@@ -24,7 +24,7 @@ class Position {
 
         //This function checks if a given input is valid
         //Probably should be somewhere else in the code?
-        bool validatePosition(int x, char y){
+        bool validatePosition(int x, int y){
             if (x==NULL){
                 std::cout << "X value is null!";
                 return false;
@@ -38,7 +38,7 @@ class Position {
                return false;
             }
 
-            if (y<'A'||y>'H'){
+            if (y<1||y>8){
                std::cout << "Y value is out of range!";
                return false;
             }
