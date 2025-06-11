@@ -4,13 +4,14 @@
 class Player {
 public:
     std::string color;
-    
+    std::vector<Piece> pieces;
+
     Player(std::string new_color) {
         color = new_color;
     }
 
     void generateSet() {
-        std::vector<Piece> pieces;
+
         Position current_position = new Position();
         current_position.x = 1;
         if (color == "White") {
@@ -53,4 +54,11 @@ public:
         }
     }
 
+    int sumPoints() {
+        int sum = 0;
+        for (p : pieces) {
+            sum += p.points;
+        }
+        return sum;
+    }
 };

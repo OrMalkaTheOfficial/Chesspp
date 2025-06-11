@@ -1,5 +1,6 @@
 #include "utils.hpp"
 #include <cmath>
+#include <vector>
 
 class Position {
     public:
@@ -50,16 +51,14 @@ class Position {
 
 class Piece {
     public:
-        int id;
         std::string color;
         Position position;
-        bool isAlive;
+        int points;
 
-        Piece(int new_id, Position new_position, std::string new_color) {
-            id = new_id;
+        Piece(Position new_position, std::string new_color, int new_points) {
             position = new_position;
             color = new_color;
-            isAlive = true;
+            points = new_points;
         }
         virtual bool validateMove(Position new_position) = 0;
 
@@ -69,6 +68,9 @@ class Piece {
             }
         }
 
+        void deletePiece() {
+            delete this;
+        }
+
 };
 
-Piece[] generatePiece(std::string type, std::string new_color) {}
