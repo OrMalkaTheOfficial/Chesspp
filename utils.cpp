@@ -70,3 +70,5 @@ class Piece {
         }
 
 };
+
+Piece[] generatePiece(std::string type, std::string new_color) {}
